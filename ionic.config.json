@@ -1,0 +1,7 @@
+{
+  "name": "HK Transport Arrival Estimation",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
