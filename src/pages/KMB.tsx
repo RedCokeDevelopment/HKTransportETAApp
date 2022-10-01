@@ -13,13 +13,13 @@ const KMB: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>KMB</IonTitle>
+          <IonTitle>Kowloon Motor Bus</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">KMB</IonTitle>
+            <IonTitle size="large">Kowloon Motor Bus</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>

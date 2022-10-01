@@ -1,22 +1,22 @@
 import { IonContent, IonHeader, IonItem, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
-const LRT: React.FC = () => {
+const GMB: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Light Rail Train</IonTitle>
+          <IonTitle>Green Minibus</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Light Rail Train</IonTitle>
+            <IonTitle size="large">Green Minibus</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
-          {["1", "2", "3", "4", "5", "5A"].map(m => <IonItem key={m} routerLink={`/lrt/${m}`}>
-              {m} 區 (Zone {m})
+          {[{id: "KLN", name: "Kowloon"}, {id: "HKI", name: "Hong Kong Island"}, {id: "NT", name: "New Territories"}].map(m => <IonItem key={m.id} routerLink={`/gmb/${m.id}`}>
+              {m.name}
           </IonItem>)}
           </IonList>
       </IonContent>
@@ -24,4 +24,4 @@ const LRT: React.FC = () => {
   );
 };
 
-export default LRT;
+export default GMB;
