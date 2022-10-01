@@ -37,7 +37,7 @@ const LRTZone: React.FC = () => {
         {params.zone_id ? (
           <IonList className="">
             {getLRTStationsByZone(params.zone_id).map((m: any) => (
-              <IonItem key={m.id} routerLink={`/lrt/station/${m.id}`}>
+              <IonItem key={m.id} routerLink={`/lrt/${params.zone_id}/${m.id}`}>
                 {m.chi} ({m.eng})
               </IonItem>
             ))}

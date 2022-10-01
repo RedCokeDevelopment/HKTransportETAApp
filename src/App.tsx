@@ -36,6 +36,10 @@ import './theme/variables.css';
 import KMBStop from './pages/KMBStop';
 import LRTZone from './pages/LRTZone';
 import LRTStation from './pages/LRTStation';
+import GMB from './pages/GMB';
+import GMBRegion from './pages/GMBRegion';
+import GMBRouteETA from './pages/GMBRouteETA';
+import GMBRoute from './pages/GMBRoute';
 
 setupIonicReact();
 
@@ -47,7 +51,7 @@ const App: React.FC = () => (
           <Route exact path="/kmb">
             <KMB />
           </Route>
-          <Route path="/kmb/:stop_id">
+          <Route exact path="/kmb/:stop_id">
             <KMBStop />
           </Route>
           <Route exact path="/mtr">
@@ -56,11 +60,23 @@ const App: React.FC = () => (
           <Route exact path="/lrt">
             <LRT />
           </Route>
-          <Route exact path="/lrt/zone/:zone_id">
+          <Route exact path="/lrt/:zone_id">
             <LRTZone />
           </Route>
-          <Route exact path="/lrt/station/:station_id">
+          <Route exact path="/lrt/:zone_id/:station_id">
             <LRTStation />
+          </Route>
+          <Route exact path="/gmb">
+            <GMB />
+          </Route>
+          <Route exact path="/gmb/:region">
+            <GMBRegion />
+          </Route>
+          <Route exact path="/gmb/:region/:route_code">
+            <GMBRoute />
+          </Route>
+          <Route exact path="/gmb/:region/:route_id/:route_seq">
+            <GMBRouteETA />
           </Route>
           <Route exact path="/">
             <Redirect to="/kmb" />
@@ -87,11 +103,11 @@ const App: React.FC = () => (
             <IonIcon icon={ellipse} />
             <IonLabel>LRT</IonLabel>
           </IonTabButton>
-          {/* <IonTabButton tab="minibus" href="/minibus">
+          <IonTabButton tab="gmb" href="/gmb">
             <IonIcon icon={square} />
-            <IonLabel>Minibus</IonLabel>
+            <IonLabel>GMB</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="ferry" href="/ferry">
+          {/* <IonTabButton tab="ferry" href="/ferry">
             <IonIcon icon={square} />
             <IonLabel>Ferry</IonLabel>
           </IonTabButton> */}

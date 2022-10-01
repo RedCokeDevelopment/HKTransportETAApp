@@ -67,7 +67,7 @@ const LRTStation: React.FC = () => {
                     </p>
                   ))
                 ) : (
-                  <p>Service Ended</p>
+                  <p>No ETA Available</p>
                 )}
               </div>
             )) : (
