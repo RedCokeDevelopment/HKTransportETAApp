@@ -34,6 +34,8 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import KMBStop from './pages/KMBStop';
+import LRTZone from './pages/LRTZone';
+import LRTStation from './pages/LRTStation';
 
 setupIonicReact();
 
@@ -45,7 +47,7 @@ const App: React.FC = () => (
           <Route exact path="/kmb">
             <KMB />
           </Route>
-          <Route path="/kmb/:station_id">
+          <Route path="/kmb/:stop_id">
             <KMBStop />
           </Route>
           <Route exact path="/mtr">
@@ -53,6 +55,12 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/lrt">
             <LRT />
+          </Route>
+          <Route exact path="/lrt/zone/:zone_id">
+            <LRTZone />
+          </Route>
+          <Route exact path="/lrt/station/:station_id">
+            <LRTStation />
           </Route>
           <Route exact path="/">
             <Redirect to="/kmb" />
@@ -74,11 +82,11 @@ const App: React.FC = () => (
           {/* <IonTabButton tab="mtr" href="/mtr">
             <IonIcon icon={ellipse} />
             <IonLabel>MTR</IonLabel>
-          </IonTabButton>
+          </IonTabButton> */}
           <IonTabButton tab="lrt" href="/lrt">
             <IonIcon icon={ellipse} />
             <IonLabel>LRT</IonLabel>
-          </IonTabButton> */}
+          </IonTabButton>
           {/* <IonTabButton tab="minibus" href="/minibus">
             <IonIcon icon={square} />
             <IonLabel>Minibus</IonLabel>

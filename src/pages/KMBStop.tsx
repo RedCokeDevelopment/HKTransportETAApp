@@ -16,14 +16,14 @@ const KMBStop: React.FC = () => {
   var [stop, setStop] = useState<any>();
   var [station, setStation] = useState<any>();
   var [time, setTime] = useState<any>(Date.now());
-  const params = useParams<{ station_id: string }>();
+  const params = useParams<{ stop_id: string }>();
 
   useIonViewWillEnter(() => {
     fetch("https://data.etabus.gov.hk/v1/transport/kmb/stop")
       .then((res) => res.json())
       .then((res) =>
         setStop(
-          res.data.filter((obj: any) => obj.stop === params.station_id)[0]
+          res.data.find((obj: any) => obj.stop === params.stop_id)
         )
       );
     updateEta();
@@ -33,7 +33,7 @@ const KMBStop: React.FC = () => {
   function updateEta() {
     fetch(
       "https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/" +
-        params.station_id
+        params.stop_id
     )
       .then((res) => res.json())
       .then((res) => setStation(res));
@@ -81,8 +81,10 @@ const KMBStop: React.FC = () => {
                       </IonLabel>
                       {obj.eta ? (
                         `${Math.round(
-                          (Date.parse(obj.eta) - time) / 1000
-                        )} seconds`
+                          (Date.parse(obj.eta) - time) / 1000 / 60
+                        )}m${Math.round(
+                          (Date.parse(obj.eta) - time) / 1000 % 60
+                        )}s`
                       ) : (
                         <>
                           {obj.route}: {obj.rmk_tc}
