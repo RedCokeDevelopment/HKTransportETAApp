@@ -11,9 +11,9 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import KMB from './pages/KMB';
+import MTR from './pages/MTR';
+import LRT from './pages/LRT';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,6 +33,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import KMBStation from './pages/KMBStation';
 
 setupIonicReact();
 
@@ -41,32 +42,51 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
+          <Route exact path="/kmb">
+            <KMB />
           </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route path="/kmb/:station_id">
+            <KMBStation />
           </Route>
-          <Route path="/tab3">
-            <Tab3 />
+          <Route exact path="/mtr">
+            <MTR />
+          </Route>
+          <Route exact path="/lrt">
+            <LRT />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/kmb" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
+          <IonTabButton tab="kmb" href="/kmb">
             <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+            <IonLabel>KMB</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
+          {/* <IonTabButton tab="nextbus" href="/nextbus">
+            <IonIcon icon={triangle} />
+            <IonLabel>Next Bus</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="mtrbus" href="/mtrbus">
+            <IonIcon icon={triangle} />
+            <IonLabel>MTR Bus</IonLabel>
+          </IonTabButton> */}
+          {/* <IonTabButton tab="mtr" href="/mtr">
             <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel>MTR</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="lrt" href="/lrt">
+            <IonIcon icon={ellipse} />
+            <IonLabel>LRT</IonLabel>
+          </IonTabButton> */}
+          {/* <IonTabButton tab="minibus" href="/minibus">
             <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonLabel>Minibus</IonLabel>
           </IonTabButton>
+          <IonTabButton tab="ferry" href="/ferry">
+            <IonIcon icon={square} />
+            <IonLabel>Ferry</IonLabel>
+          </IonTabButton> */}
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>

@@ -5,5 +5,5 @@ An ionic side project to provide all-in-one Hong Kong transport arrival estimati
 ```
 pnpm install
 npm i -g @ionic/cli
-ionic dev
+ionic serve
 ```
