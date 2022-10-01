@@ -28,6 +28,7 @@
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
+		<string>gps</string>
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
@@ -45,5 +46,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to detect nearby transport stations</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to detect nearby transport stations</string>
 </dict>
 </plist>

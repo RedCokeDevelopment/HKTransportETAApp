@@ -32,7 +32,7 @@ const KMB: React.FC = () => {
               <IonLabel>{obj.name_tc} ({obj.name_en})</IonLabel>
 
             </IonItem>
-        ) : "Loading..." : "Please enable location"}
+        ) : "Loading..." : "Please enable location services"}
         </IonList>
       </IonContent>
     </IonPage>

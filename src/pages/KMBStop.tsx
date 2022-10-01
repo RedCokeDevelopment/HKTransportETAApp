@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-const KMBStation: React.FC = () => {
+const KMBStop: React.FC = () => {
   var [stop, setStop] = useState<any>();
   var [station, setStation] = useState<any>();
   var [time, setTime] = useState<any>(Date.now());
@@ -43,7 +43,7 @@ const KMBStation: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>KMB Stop</IonTitle>
+          <IonTitle>{stop ? stop.name_tc + " " + stop.name_en : "KMB Stop"}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -100,4 +100,4 @@ const KMBStation: React.FC = () => {
   );
 };
 
-export default KMBStation;
+export default KMBStop;
