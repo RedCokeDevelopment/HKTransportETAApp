@@ -33,7 +33,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import KMBStation from './pages/KMBStation';
+import KMBStop from './pages/KMBStop';
 
 setupIonicReact();
 
@@ -46,7 +46,7 @@ const App: React.FC = () => (
             <KMB />
           </Route>
           <Route path="/kmb/:station_id">
-            <KMBStation />
+            <KMBStop />
           </Route>
           <Route exact path="/mtr">
             <MTR />
