@@ -67,29 +67,26 @@ const GMBRouteETA: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         {stopsEta ? (
-          // JSON.stringify(eta)
-          // JSON.stringify(stopsEta)
           stopsEta.data.route_stops.map((x: any) => (
             <div key={x.stop_seq} className="ion-padding">
-              <h4 style={{ font: "bold" }}>
-                {x.name_tc}
+              <h4 style={{ font: "bold", marginTop: 0 }}>
+                {x.stop_seq}. {x.name_tc}
                 <br />
                 {x.name_en}
               </h4>
-              <p>
                 {x.eta.length === 0
-                  ? "No ETA Available"
-                  : x.eta.map(
-                      (eta: any) =>
-                        eta.diff +
-                        " stops behind, " +
-                        `${Math.round(
-                          (Date.parse(eta.timestamp) - time) / 1000 / 60
-                        )}m${Math.round(
-                          ((Date.parse(eta.timestamp) - time) / 1000) % 60
-                        )}s`
-                    )}
-              </p>
+                  ? <p>"No ETA Available"</p>
+                  : x.eta.map((eta: any) => (
+                      <p key={JSON.stringify(eta)}>
+                        {eta.diff +
+                          ` stops behind, ${Math.round(
+                            (Date.parse(eta.timestamp) - time) / 1000 / 60
+                          )}m${Math.round(
+                            ((Date.parse(eta.timestamp) - time) / 1000) % 60
+                          )}s`}
+                        {/* <br /> */}
+                      </p>
+                    ))}
             </div>
           ))
         ) : (
