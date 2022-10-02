@@ -9,6 +9,7 @@ import {
   IonToolbar,
   useIonViewWillEnter,
 } from "@ionic/react";
+import { exitCode } from "process";
 import { useState } from "react";
 import { useParams } from "react-router";
 
@@ -68,26 +69,34 @@ const GMBRouteETA: React.FC = () => {
         </IonHeader>
         {stopsEta ? (
           stopsEta.data.route_stops.map((x: any) => (
-            <div key={x.stop_seq} className="ion-padding">
-              <h4 style={{ font: "bold", marginTop: 0 }}>
+            <>
+              <h4
+                key={x.stop_seq}
+                style={{ font: "bold", margin: 0 }}
+                className="ion-padding"
+              >
                 {x.stop_seq}. {x.name_tc}
                 <br />
                 {x.name_en}
               </h4>
-                {x.eta.length === 0
-                  ? <p>"No ETA Available"</p>
-                  : x.eta.map((eta: any) => (
-                      <p key={JSON.stringify(eta)}>
-                        {eta.diff +
-                          ` stops behind, ${Math.round(
-                            (Date.parse(eta.timestamp) - time) / 1000 / 60
-                          )}m${Math.round(
-                            ((Date.parse(eta.timestamp) - time) / 1000) % 60
-                          )}s`}
-                        {/* <br /> */}
-                      </p>
-                    ))}
-            </div>
+
+              {x.eta.length === 0 ? (
+                <p>No ETA Available</p>
+              ) : (
+                <IonList>
+                  {x.eta.map((eta: any) => (
+                    <IonItem>
+                      <IonLabel>{Math.abs(eta.diff) + ` stop${Math.abs(eta.diff)===1?"":"s"} ${eta.diff<0?"ahead":"behind"}`}</IonLabel>
+                      {`${Math.round(
+                        (Date.parse(eta.timestamp) - time) / 1000 / 60
+                      )}m${Math.round(
+                        ((Date.parse(eta.timestamp) - time) / 1000) % 60
+                      )}s`}
+                    </IonItem>
+                  ))}
+                </IonList>
+              )}
+            </>
           ))
         ) : (
           <div>Loading...</div>
