@@ -1,5 +1,5 @@
 import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, IonVirtualScroll, RefresherEventDetail, useIonViewWillEnter } from '@ionic/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Geolocation } from "@capacitor/geolocation";
 import { chevronDownCircleOutline } from 'ionicons/icons';
 
@@ -50,7 +50,6 @@ useIonViewWillEnter(() => {
             refreshingText="Refreshing position..."
           ></IonRefresherContent>
         </IonRefresher>
-        {/* <IonVirtualScroll class="ion-content-scroll-host"> */}
         <IonList>
           {loc ? (
             stops ? (
@@ -92,7 +91,6 @@ useIonViewWillEnter(() => {
             </p>
           )}
         </IonList>
-        {/* </IonVirtualScroll> */}
       </IonContent>
     </IonPage>
   );

@@ -40,6 +40,8 @@ import GMB from './pages/GMB';
 import GMBRegion from './pages/GMBRegion';
 import GMBRouteETA from './pages/GMBRouteETA';
 import GMBRoute from './pages/GMBRoute';
+import MTRLine from './pages/MTRLine';
+import MTRStation from './pages/MTRStation';
 
 setupIonicReact();
 
@@ -56,6 +58,12 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/mtr">
             <MTR />
+          </Route>
+          <Route exact path="/mtr/:line_id">
+            <MTRLine />
+          </Route>
+          <Route exact path="/mtr/:line_id/:station_id">
+            <MTRStation />
           </Route>
           <Route exact path="/lrt">
             <LRT />
@@ -95,10 +103,10 @@ const App: React.FC = () => (
             <IonIcon icon={triangle} />
             <IonLabel>MTR Bus</IonLabel>
           </IonTabButton> */}
-          {/* <IonTabButton tab="mtr" href="/mtr">
+          <IonTabButton tab="mtr" href="/mtr">
             <IonIcon icon={ellipse} />
             <IonLabel>MTR</IonLabel>
-          </IonTabButton> */}
+          </IonTabButton>
           <IonTabButton tab="lrt" href="/lrt">
             <IonIcon icon={ellipse} />
             <IonLabel>LRT</IonLabel>
