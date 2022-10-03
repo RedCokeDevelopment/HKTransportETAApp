@@ -54,21 +54,24 @@ const LRTStation: React.FC = () => {
             stationEta.platform_list.map((x: any) => (
               <div
                 key={`${x.platform_id}${x.time_en ? " " + x.time_en : ""}`}
-                className="ion-padding"
               >
-                <h4 style={{ font: "bold" }}>Platform {x.platform_id}</h4>
-                {x.end_service_status !== 1 ? (
-                  x.route_list.map((y: any) => (
-                    <p key={y.route_no + "_" + y.time_en}>
-                      Route {y.route_no} to {y.dest_en} ({y.dest_ch}) [
-                      {y.train_length}-Cart]
-                      <br />
+                <h4 style={{ font: "bold", margin: 0 }} className="ion-padding">{x.platform_id} 號月台<br/>Platform {x.platform_id}</h4>
+                
+                {x.end_service_status !== 1 ? (<IonList>
+                  {x.route_list.map((y: any) => (
+                    <IonItem key={y.route_no + "_" + y.time_en} style={{paddingBottom: "8px"}}>
+                      <IonLabel>
+                        [{y.train_length} 卡 Cart] {y.route_no}: {y.dest_ch}
+                        <br />
+                        {y.dest_en}
+                      </IonLabel>
                       {y.time_en}
-                    </p>
-                  ))
+                    </IonItem>
+                  ))}</IonList>
                 ) : (
                   <p>No ETA Available</p>
                 )}
+                
               </div>
             )) : (
           <div>Loading...</div>

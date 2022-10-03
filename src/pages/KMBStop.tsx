@@ -5,6 +5,7 @@ import {
   IonLabel,
   IonList,
   IonPage,
+  IonRefresher,
   IonTitle,
   IonToolbar,
   useIonViewWillEnter,
@@ -43,7 +44,9 @@ const KMBStop: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{stop ? stop.name_tc + " " + stop.name_en : "KMB Stop"}</IonTitle>
+          <IonTitle>
+            {stop ? stop.name_tc + " " + stop.name_en : "KMB Stop"}
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -83,7 +86,7 @@ const KMBStop: React.FC = () => {
                         `${Math.round(
                           (Date.parse(obj.eta) - time) / 1000 / 60
                         )}m${Math.round(
-                          (Date.parse(obj.eta) - time) / 1000 % 60
+                          ((Date.parse(obj.eta) - time) / 1000) % 60
                         )}s`
                       ) : (
                         <>
