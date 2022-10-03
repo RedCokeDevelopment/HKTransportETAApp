@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, IonVirtualScroll, RefresherEventDetail } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, IonVirtualScroll, RefresherEventDetail, useIonViewWillEnter } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { Geolocation } from "@capacitor/geolocation";
 import { chevronDownCircleOutline } from 'ionicons/icons';
@@ -15,10 +15,16 @@ function refreshStops(event: CustomEvent<RefresherEventDetail>) {
     }
   );
 }
-  useEffect(()=>{
-    Geolocation.getCurrentPosition({enableHighAccuracy: true}).then((loc: any)=>{setLoc(loc)})
-    fetch("https://data.etabus.gov.hk/v1/transport/kmb/stop").then(res=>res.json()).then(res=>setStops(res))
-  }, [])
+useIonViewWillEnter(() => {
+  Geolocation.getCurrentPosition({ enableHighAccuracy: true }).then(
+    (loc: any) => {
+      setLoc(loc);
+    }
+  );
+  fetch("https://data.etabus.gov.hk/v1/transport/kmb/stop")
+    .then((res) => res.json())
+    .then((res) => setStops(res));
+}, []);
   return (
     <IonPage>
       <IonHeader>
